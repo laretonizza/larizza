@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Chatty Zilla</h2>
+      <ul>
+        <li class="active">Dashboard</li>
+        <li>Web SDK</li>
+        <li>Channels</li>
+        <li>Conversations</li>
+        <li>Workspace</li>
+        <li>Billing</li>
+      </ul>
+      <button class="logout">Log Out</button>
+    </aside>
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="header">
+        <h1>Dashboard</h1>
+        <div class="user-avatar">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuvRQfRp8X5C7CoFiplCop3etjoFKUx57M_g&s" alt="User Avatar">
+        </div>
+      </header>
+      <!-- Stats Section -->
+      <section class="stats">
+        <div class="stat-box blue">
+          <h3>4 min</h3>
+          <p>Count of Currently Open Conversations</p>
+        </div>
+        <div class="stat-box purple">
+          <h3>411</h3>
+          <p>Count of All Conversations</p>
+        </div>
+        <div class="stat-box red">
+          <h3>1h 57 min</h3>
+          <p>Avg Response Time for Conversations</p>
+        </div>
+      </section>
+      <!-- Data Section -->
+      <section class="data">
+        <div class="data-box users">
+          <h3>620</h3>
+          <p>Count of Registered Users</p>
+          <ul>
+            <li>Mary Johnson</li>
+            <li>Mark Taylor</li>
+            <li>Sophia Lee</li>
+          </ul>
+        </div>
+        <div class="data-box anonymous">
+          <h3>318</h3>
+          <p>Count of Anonymous Users</p>
+          <div class="chart">
+            <img src="chart-placeholder.png" alt="Chart">
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script type="module">
+    import Chatbox from 'https://cdn.jsdelivr.net/npm/@chaindesk/embeds@latest/dist/chatbox/index.js';
+  
+    const widget = await Chatbox.initBubble({
+      agentId: 'cm4fcbjps01z462aet2ifa43z',
+      
+      // optional 
+      // If provided will create a contact for the user and link it to the conversation
+      contact: {
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'customer@email.com',
+        phoneNumber: '+33612345644',
+        userId: '42424242',
+      },
+      // optional
+      // Override initial messages
+      initialMessages: [
+        'Hello Georges how are you doing today?',
+        'How can I help you ?',
+      ],
+      // optional
+      // Provided context will be appended to the Agent system prompt
+      context: "The user you are talking to is John. Start by Greeting him by his name.",
+    });
+  
+    // open the chat bubble
+    widget.open();
+  
+    // close the chat bubble
+    widget.close()
+  
+    // or 
+    widget.toggle()
+  </script>
+</body>
+</html>
